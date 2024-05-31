@@ -46,81 +46,26 @@ This includes logs from various Windows Events such as application logs, system 
 <img src="https://github.com/nahid7474/Photos/blob/main/Splunk16.png"/>
 <img src="https://github.com/nahid7474/Photos/blob/main/Splunk15.png"/>
 
-Create Detection Rules:
+Install Wireshark and detect this activity in Splunk 
+---------------------------------------------------------
 
-Now that I have the forwarder installed and configured, It's time for creating detection rules based on the data I am getting. 
-In this case, I will install Wireshark and check if my activity is being picked up by Splunk and create a detection rule so next tieme anyone opens wireshark in the environment, I get an alert on that. 
+Now that I have the forwarder installed and configured, It's time  to test that my VM is forwarding logs to Splunk.
+In this case,  I will install Wireshark and check if my activity is being picked up by Splunk. 
 
+<img src="https://github.com/nahid7474/Photos/blob/main/wireshark.png"/>
+<img src="https://github.com/nahid7474/Photos/blob/main/wiresharkActivity.png"/>
 
+A splunk search shows that this activity has indeed been picked up by Spunk.
 
+<img src="https://github.com/nahid7474/Photos/blob/main/wiresharkDetection.png"/>
 
-Test Detection Rule:
+Create alert 
+----------------------------------------------------------------------
+Now that I have detected this activity, I can save this as an alert. 
+Essentially, everytime someone installs/opens wireshark this will alert me and send me an email as well with a link to the detection for investigation. 
 
-Run test scenarios or use sample data to ensure that your detection rules are working as expected.
-Verify that alerts are triggered correctly for the defined conditions.
-
-Installed Oracle virtualBox, and then windows virtual machines on it. 
- 
-1. Took snapshots and restore points for each VM. 
- 
-3. Made sure all VMs are sandboxed/separate from my home network by NAT and they talk to each other
- 
- 
- 
-Made sure ciomputers are talking to each other in the virtualized network
- 
-
-Install and configurenSplunk Enterprise Security as a SIEM on windows machine.
- 
-Created admin account and logged in with the admin credentials.
- 
-Log in as admin and start adding/ingesting data in different ways available
- 
-Add data source and start ingesting data through monitoring 
- 
-
-In this case, I would choose LocalEventLogs and then select application, security and system logs to work on.
- 
-Kept everything in the main/default index, once configured, Splunk is ready for searching logs
- 
-Run this test command in the search bar to see if data is searchable, if it is, it indicates that Splunk is configured successfully to receive logs, and ready for the next stage.
- 
-Define use case, Create correlation search and similate detection
-
-----
-
-Intall and configure Sysmon. Download Sysmon and it’s config file from GitHub. Used powershell with administrator privilege to install Sysmon from the same directory. 
- 
- 
-
- 
-Confirmed from the services that sysmon monitoring service is up and running
- 
-Malware analysis on Kali Linux using NMAP
-Log onto Kali machine and find out the IP address of this machine via ifconfig command in the terminal (10.0.2.15 in this case)
- 
-To see all the available commands/options NMAP can do, type in nmap -H and this will show a screen below. I will focus on NMAP -A command which will essentially start scanning my target machine which is 10.0.2.15
- 
-Get more apps
- 
- 
- 
- 
-Now I will upload more data that are searchable within the Splunk environment and then later be used for detection and correlation purposes. 
-Now I will add some more data to enrich my splunk database for better detections. Will do this by uploading a bunch of web and security related traffic, create 2 new indexes named web and security and put everything in there.
- 
- 
- 
- 
-Configure splunk to listen on port 99777
-Download and Install Universal forwarder
-Forwarding Windows Event Logs to Splunk Using Universal Forwarder
-
-       
-Want to detect any installation task, wireshrk in this case.
+<img src="https://github.com/nahid7474/Photos/blob/main/DetectionRule.png"/>
 
 
-Usecase for detection: I want to monitor if any machine in the network is running any application out of the organization’s company portal. This example use case will include our target app “Wireskark”
-   
    
  
